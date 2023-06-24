@@ -10,46 +10,61 @@
 0. Install Conda
 
 curl -sL "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh" > "Miniconda3.sh"
+
 bash Miniconda3.sh
 
 2. Create a new conda environment
 
 conda create -n machinguntalk python=3.10.9
+
 conda activate machinguntalk
 
 4. Install Pytorch
 
 Linux/WSL 	NVIDIA 	pip3 install torch torchvision torchaudio
+
 Linux 	    AMD 	  pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.4.2
 
 5. Install the web UI
 
 git clone https://github.com/rentacka/machinguntalk
+
 cd machinguntalk
+
 pip install -r requirements.txt
 
 git clone https://github.com/log1stics/voice-generator-webui
+
 mv voice-generator-webui VGwebui
+
 cd VGwebui
+
 pip install -r requirements.txt
 
 5.Run
 
 　全部インストールできたら、いったんWSLを閉じて、
+ 
 cd machinguntalk
+
 conda activate machinguntalk
+
 python machinguntalk.py
 
 
 ＊whisper-large-v2-ct2が必要です。
+
 ない場合はlarge-v2を使ってください。
 
 
 〇voice-generator-webuiのインストールでエラー
 
 voice-generator-webuiはVGwebui\tts\monotonic_align\monotonic_align内に空のmonotonic_alignフォルダを作ります。
+
 そして、VGwebui\tts\monotonic_align\monotonic_align内の方にVGwebui\tts\monotonic_align内のsetup.py関連のファイルをコピーします。
+
 これで、python setup.py build_ext --inplace するとビルドできます。
+
 最後に、pip install -e . でインストールします。
 
 〇FileNotFoundError　libbitsandbytes_cuda117.so'
