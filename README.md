@@ -35,6 +35,11 @@ cd machinguntalk
 conda activate machinguntalk
 python machinguntalk.py
 
+
+＊whisper-large-v2-ct2が必要です。
+ない場合はlarge-v2を使ってください。
+
+
 〇voice-generator-webuiのインストールでエラー
 voice-generator-webuiはVGwebui\tts\monotonic_align\monotonic_align内に空のmonotonic_alignフォルダを作ります。
 そして、VGwebui\tts\monotonic_align\monotonic_align内の方にVGwebui\tts\monotonic_align内のsetup.py関連のファイルをコピーします。
