@@ -52,7 +52,7 @@ cd machinguntalk
 
 conda activate machinguntalk
 
-python machinguntalk.py
+python MashinGunTalk.py
 
 
 ＊whisper-large-v2-ct2が必要です。
