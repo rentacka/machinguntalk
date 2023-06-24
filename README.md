@@ -23,3 +23,29 @@ Linux 	    AMD 	  pip3 install torch torchvision torchaudio --index-url https://
 git clone https://github.com/rentacka/machinguntalk
 cd machinguntalk
 pip install -r requirements.txt
+
+git clone https://github.com/log1stics/voice-generator-webui
+mv voice-generator-webui VGwebui
+cd VGwebui
+pip install -r requirements.txt
+
+5.Run
+　全部インストールできたら、いったんWSLを閉じて、
+cd machinguntalk
+conda activate machinguntalk
+python machinguntalk.py
+
+〇voice-generator-webuiのインストールでエラー
+voice-generator-webuiはVGwebui\tts\monotonic_align\monotonic_align内に空のmonotonic_alignフォルダを作ります。
+そして、VGwebui\tts\monotonic_align\monotonic_align内の方にVGwebui\tts\monotonic_align内のsetup.py関連のファイルをコピーします。
+これで、python setup.py build_ext --inplace するとビルドできます。
+最後に、pip install -e . でインストールします。
+
+〇FileNotFoundError　libbitsandbytes_cuda117.so'
+sudo ln -s /usr/lib/wsl/lib/libcuda.so.1 /usr/local/cuda/lib64/libcuda.soで一応解決。WSL再起動必要。
+
+さきほどの方法で解決しない場合、Cudaインストールしてるのに動かない場合は、Cudaのパスが通てないことが原因です。
+
+CUDA複数バージョンインストール後のシステム環境変数の変更 https://blog.kintarou.com/2021/06/25/post-1591/
+
+参照してくださいｂ
