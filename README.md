@@ -8,18 +8,22 @@
 #手動インストール。Condaでの設定
 
 0. Install Conda
+
 curl -sL "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh" > "Miniconda3.sh"
 bash Miniconda3.sh
 
 2. Create a new conda environment
+
 conda create -n machinguntalk python=3.10.9
 conda activate machinguntalk
 
-3. Install Pytorch
+4. Install Pytorch
+
 Linux/WSL 	NVIDIA 	pip3 install torch torchvision torchaudio
 Linux 	    AMD 	  pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.4.2
 
-4. Install the web UI
+5. Install the web UI
+
 git clone https://github.com/rentacka/machinguntalk
 cd machinguntalk
 pip install -r requirements.txt
@@ -30,6 +34,7 @@ cd VGwebui
 pip install -r requirements.txt
 
 5.Run
+
 　全部インストールできたら、いったんWSLを閉じて、
 cd machinguntalk
 conda activate machinguntalk
@@ -41,12 +46,14 @@ python machinguntalk.py
 
 
 〇voice-generator-webuiのインストールでエラー
+
 voice-generator-webuiはVGwebui\tts\monotonic_align\monotonic_align内に空のmonotonic_alignフォルダを作ります。
 そして、VGwebui\tts\monotonic_align\monotonic_align内の方にVGwebui\tts\monotonic_align内のsetup.py関連のファイルをコピーします。
 これで、python setup.py build_ext --inplace するとビルドできます。
 最後に、pip install -e . でインストールします。
 
 〇FileNotFoundError　libbitsandbytes_cuda117.so'
+
 sudo ln -s /usr/lib/wsl/lib/libcuda.so.1 /usr/local/cuda/lib64/libcuda.soで一応解決。WSL再起動必要。
 
 さきほどの方法で解決しない場合、Cudaインストールしてるのに動かない場合は、Cudaのパスが通てないことが原因です。
